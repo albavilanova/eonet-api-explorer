@@ -168,5 +168,4 @@ dist
 .yarn/install-state.gz
 .pnp.\*
 
-# pauek
-users.html
+events.html

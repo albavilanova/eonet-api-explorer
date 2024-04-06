@@ -1,6 +1,6 @@
 const server =  Bun.serve({
     fetch(req: Request): Response | Promise<Response> {
-        return new Response(Bun.file("users.html"));
+        return new Response(Bun.file("events.html"));
     },
     port: 3000,
 });
