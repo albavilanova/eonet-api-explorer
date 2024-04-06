@@ -1,13 +1,57 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+}
+
+#main-title {
+ text-align: center;
+ padding-top: 5em;
+ font-weight: 600;
+ font-size: 24px;
+}
+
+#events {
+  padding: 5em 10em;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 2em;
 }
 
 .event {
-  font-family: sans-serif;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   padding: 0.4rem;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
+}
+
+.categories {
+  display: grid;
+  justify-content: end;
+}
+
+.category {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.wildfires {
+  color: red;
+  border: 1px solid red;
+}
+
+.volcanoes {
+  color: rgb(180, 106, 16);
+  border: 1px solid rgb(180, 106, 16);
+}
+
+.title {
+  font-weight: 600;
+  padding: 0.4em;
+}
+
+.magnitude, .coordinates {
+  padding: 0.4em;
 }
