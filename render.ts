@@ -10,20 +10,26 @@ const head = (title: string) => `
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <style>${css}</style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin="">
+  </script>
 </head>`;
 
-// const renderMap = (events: Array<Event>) => {
-//   let html = "";
-//   for (const event of events) {
-//     for (const geometry of event.geometry) {
-//       console.log(geometry.coordinates[0]);
-//       if (geometry.coordinates) {
-//         html += `Lat: ${geometry.coordinates[0]}, lon: ${geometry.coordinates[1]}`;
-//       }
-//     }
-//   }
-//   return html;
-// };
+const addMapElements = (events: Array<Event>) => {
+  let html = "";
+  for (const event of events) {
+    for (const geometry of event.geometry) {
+      if (geometry.coordinates) {
+        html += `L.marker([${geometry.coordinates[1]}, ${geometry.coordinates[0]}]).addTo(mymap);`
+      }
+    }
+  }
+  return html;
+};
 
 const renderEvents = (events: Array<Event>) => {
   let html = "";
@@ -61,9 +67,20 @@ export const render = (events: Array<Event>) => {
     <div id="main-title">
         Earth Observatory Natural Event Tracker Explorer
     </div>
-    <div id="events">
-        ${renderEvents(events)}
+    <div id="main-content">
+        <div id="map"></div>
+        <div id="events">
+            ${renderEvents(events)}
+        </div>
     </div>
+    <script>
+    var mymap = L.map('map').setView([0, 0], 1);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(mymap);
+    ${addMapElements(events)}
+    </script>
   </body>
 </html>`;
 };

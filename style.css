@@ -5,14 +5,19 @@ body {
 }
 
 #main-title {
- text-align: center;
- padding-top: 5em;
+ padding: 2em;
  font-weight: 600;
  font-size: 24px;
 }
 
+#main-content {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  padding: 0em 2em;
+}
+
 #events {
-  padding: 5em 10em;
+  padding: 0em 2em;
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 2em;
@@ -54,4 +59,8 @@ body {
 
 .magnitude, .coordinates {
   padding: 0.4em;
+}
+
+#map { 
+  height: 450px;
 }
