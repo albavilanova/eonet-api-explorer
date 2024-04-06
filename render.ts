@@ -50,8 +50,10 @@ const renderEvents = (events: Array<Event>) => {
       if (geometry.coordinates) {
         html += `<div class="coordinates">Lon: ${geometry.coordinates[0].toFixed(
           2
-        )}, lat: ${geometry.coordinates[1].toFixed(2)}</div>`;
+        )}, Lat: ${geometry.coordinates[1].toFixed(2)}</div>`;
       }
+      // Show only 1 magnitude and set of coords, this can be expanded at per event level
+      break
     }
     html += `</div>`;
     html += `</div>`;
@@ -69,18 +71,25 @@ export const render = (events: Array<Event>) => {
     </div>
     <div id="main-content">
         <div id="map"></div>
-        <div id="events">
-            ${renderEvents(events)}
+        <div>
+            <div id="events">
+                ${renderEvents(events)}
+            </div>
         </div>
     </div>
     <script>
     var mymap = L.map('map').setView([0, 0], 1);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        attribution: '&copy; Esri'
     }).addTo(mymap);
     ${addMapElements(events)}
     </script>
+    <footer>
+        Earth Observatory Natural Event Tracker (EONET) Explorer
+        <br>
+        Developed by Alba Vilanova Cortezón with data from <a href="https://eonet.gsfc.nasa.gov/">NASA Goddard Space Flight Center</a>
+    </footer>
   </body>
 </html>`;
 };
