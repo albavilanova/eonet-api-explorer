@@ -55,7 +55,6 @@ export const loadEvents = async (options: {
   // Append optional parameters to url
   const url = new URL(`https://eonet.gsfc.nasa.gov/api/v3/events`);
   Object.entries(options).forEach(([key, value]) => {
-    console.log(options);
     url.searchParams.append(key, value.toString());
   });
 
