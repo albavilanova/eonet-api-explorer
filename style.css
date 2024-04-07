@@ -15,7 +15,7 @@ body {
  font-size: 24px;
  text-align: center;
  border-bottom: 1px solid rgb(171, 171, 171);
- height: 10vh;
+ height: 8vh;
  display: grid;
  align-items: center;
 }
@@ -27,9 +27,12 @@ body {
   gap: 2em;
 }
 
+.category-icon {
+  width: 20px;
+}
+
 .categories {
   display: grid;
-  justify-content: end;
 }
 
 .category {
@@ -37,6 +40,11 @@ body {
   margin-bottom: 0.5em;
   border-radius: 5px;
   width: fit-content;
+}
+
+.category-name  {
+  float: right;
+  padding-top: 5px;
 }
 
 .wildfires {
@@ -55,16 +63,18 @@ body {
 }
 
 .title {
+  font-size: 16px;
   font-weight: 600;
   padding: 0.4em;
 }
 
-.magnitude, .coordinates {
+.date, .magnitude {
+  font-size: 15px;
   padding: 0.4em;
 }
 
 #map { 
-  height: 80vh;
+  height: 82vh;
 }
 
 footer {
@@ -80,4 +90,9 @@ footer {
 
 footer a {
   color: red;
+}
+
+.leaflet-popup-content {
+  margin: 10px 10px 10px 10px !important;
+  line-height: 1 !important;
 }

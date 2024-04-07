@@ -2,10 +2,10 @@ import { writeFile } from "fs/promises";
 import { render } from "./render.js";
 import { loadEvents } from "./events.js";
 
-const limit = 50;
-const start = "2023-01-01";
-const end = "2023-12-31";
+const limit = 500;
+const start = "2017-01-01";
+const end = "2024-12-31";
 
-const events = await loadEvents({ limit });
+const events = await loadEvents({ limit, start, end });
 const html = render(events);
 await writeFile('events.html', html);

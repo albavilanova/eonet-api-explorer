@@ -23,23 +23,33 @@ const head = (title: string) => `
 const addMapElements = (events: Array<Event>) => {
   let js = "";
   for (const event of events) {
-    for (const geometry of event.geometry) {
-      if (geometry.coordinates) {
-        var markerContent = `<div class="event">`
-        markerContent += `<div class="categories">`
-        for (const category of event.categories) {
-          markerContent += `<div class="category ${category.id}">${category.title}</div>`;
-        }
+    let geometry = event.geometry[event.geometry.length - 1];
+    if (geometry.coordinates) {
+      var markerContent = `<div class="event">`;
+      markerContent += `<div class="categories">`;
+      for (const category of event.categories) {
+        markerContent += `<div class="category ${category.id}">`
+        markerContent += `<img src="assets/icons/${event.categories[0].id}-icon.png" class="category-icon"/>`
+        markerContent += `<div class="category-name">${category.title}</div>`
         markerContent += `</div>`;
-        markerContent += `<div class="title">${event.title}</div>`;
-        if (geometry.magnitudeValue) {
-          markerContent += `<div class="magnitude">Magnitude: ${geometry.magnitudeValue} ${geometry.magnitudeUnit}</div>`;
-        }
-        markerContent += `</div>`;
-        js += `var marker = L.marker([${geometry.coordinates[1]}, ${geometry.coordinates[0]}]);`
-        js += `marker.addTo(mymap).bindPopup('${markerContent}');`
+        break;
       }
-      break
+      markerContent += `</div>`;
+      markerContent += `<div class="title">${event.title}</div>`;
+      markerContent += `<div class="date">Date: ${
+        geometry.date.split("T")[0]
+      }</div>`;
+      if (geometry.magnitudeValue) {
+        markerContent += `<div class="magnitude">Magnitude: ${geometry.magnitudeValue} ${geometry.magnitudeUnit}</div>`;
+      }
+      markerContent += `</div>`;
+      js += `var LeafletIcon = L.Icon.extend({options: {iconSize: [20, 20]}});`;
+      js += `var icon = new LeafletIcon({iconUrl: "assets/icons/${event.categories[0].id}-icon.png"});`;
+      js += `var marker = L.marker([${geometry.coordinates[1]}, 
+                                    ${geometry.coordinates[0]}],
+                                    {icon: icon}
+                                  );`;
+      js += `marker.addTo(mymap).bindPopup('${markerContent}');`;
     }
   }
   return js;
@@ -61,7 +71,7 @@ export const render = (events: Array<Event>) => {
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 18,
         attribution: '&copy; Esri'
-    }).addTo(mymap);
+    }).addTo(mymap);  
     ${addMapElements(events)}
     </script>
     <footer>
