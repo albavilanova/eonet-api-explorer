@@ -1,22 +1,23 @@
-body {
-  margin: 0;
-  padding: 0;
+html, body {
+  margin: 0; 
+  padding: 0; 
+  height: 100vh;
+  width: 100%;
   font-family: sans-serif;
-  /* height: 100vh; */
+}
+
+body {
+  overflow:hidden;
 }
 
 #main-title {
- padding: 1em;
  font-weight: 600;
  font-size: 24px;
  text-align: center;
  border-bottom: 1px solid rgb(171, 171, 171);
-}
-
-#main-content {
-  display: grid;
-  grid-template-columns: 40% 60%;
-  padding: 2em;
+ height: 10vh;
+ display: grid;
+ align-items: center;
 }
 
 #events {
@@ -24,13 +25,6 @@ body {
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 2em;
-}
-
-.event {
-  display: flex;
-  flex-direction: column;
-  padding: 0.4rem;
-  border: 1px solid #ddd;
 }
 
 .categories {
@@ -70,7 +64,7 @@ body {
 }
 
 #map { 
-  height: 450px;
+  height: 80vh;
 }
 
 footer {
@@ -78,8 +72,10 @@ footer {
   text-align: center;
   color: white;
   background-color: rgb(6, 31, 81);
-  padding: 5em;
   line-height: 25px;
+  height: 10vh;
+  display: grid;
+  align-items: center;
 }
 
 footer a {
