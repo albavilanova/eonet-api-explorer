@@ -10,12 +10,5 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "@stricjs/router": "^5.0.6",
-    "@stricjs/utils": "^2.0.7",
-    "@types/geojson": "^7946.0.14",
-    "@types/leaflet": "^1.9.9",
-    "leaflet": "^1.9.4"
   }
 }

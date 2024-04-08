@@ -1,4 +1,3 @@
-import { marker } from "leaflet";
 import { Event } from "./events.js";
 import * as fs from "fs";
 
