@@ -1,4 +1,4 @@
-# Generador de HTML en Typescript
+# EONET API EXPLORER
 
 Se trata de hacer un programa en Typescript que genera una página en HTML a partir de datos leídos en JSON. Se proporciona un ejemplo sencillo, con una sola página, a modo de guía. 
 

@@ -28,7 +28,7 @@ const server = Bun.serve({
     async fetch (req: Request): Promise<Response> {
         const path = new URL(req.url).pathname;
         
-        if (path === "/") return new Response(Bun.file("public/events.html"));
+        if (path === "/") return new Response(Bun.file("public/index.html"));
         
         if (filesPaths.includes(path)) {
             return new Response(Bun.file("public/" + path));

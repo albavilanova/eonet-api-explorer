@@ -8,4 +8,4 @@ const end = "2024-12-31";
 
 const events = await loadEvents({ limit, start, end });
 const html = render(events);
-await writeFile('./public/events.html', html);
+await writeFile('./public/index.html', html);
