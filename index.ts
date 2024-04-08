@@ -19,9 +19,13 @@ function getPaths(dirPath: string): string[] {
     return paths;
 }
 
-// Get all files under assets to create router
+// Get all files under assets
 const assetsPath = './public/assets/';
 const filesPaths = getPaths(assetsPath);
+
+// Get all files under events
+const eventsPath = './public/events/';
+const eventsPaths = getPaths(eventsPath);
 
 const server = Bun.serve({
     port: 3000,
@@ -32,6 +36,10 @@ const server = Bun.serve({
         
         if (filesPaths.includes(path)) {
             return new Response(Bun.file("public/" + path));
+        }
+        
+        if (eventsPaths.includes("/events" + path)) {
+            return new Response(Bun.file("public/events" + path));
         }
 
         return new Response("Page not found", { status: 404 });

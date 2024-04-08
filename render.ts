@@ -1,5 +1,5 @@
-import { Event } from "./events.js";
 import * as fs from "fs";
+import { Event } from "./events.js";
 
 const css = fs.readFileSync("style.css", "utf-8");
 
@@ -24,7 +24,7 @@ const addMapElements = (events: Array<Event>) => {
   for (const event of events) {
     let geometry = event.geometry[event.geometry.length - 1];
     if (geometry.coordinates) {
-      var markerContent = `<div class="event">`;
+      var markerContent = `<div class="event"><a href="${event.id}.html">`;
       markerContent += `<div class="categories">`;
       for (const category of event.categories) {
         markerContent += `<div class="category ${category.id}">`
@@ -41,7 +41,7 @@ const addMapElements = (events: Array<Event>) => {
       if (geometry.magnitudeValue) {
         markerContent += `<div class="magnitude">Magnitude: ${geometry.magnitudeValue} ${geometry.magnitudeUnit}</div>`;
       }
-      markerContent += `</div>`;
+      markerContent += `</a></div>`;
       js += `var LeafletIcon = L.Icon.extend({options: {iconSize: [20, 20]}});`;
       js += `var icon = new LeafletIcon({iconUrl: "assets/icons/${event.categories[0].id}-icon.png"});`;
       js += `var marker = L.marker([${geometry.coordinates[1]}, 
@@ -50,6 +50,8 @@ const addMapElements = (events: Array<Event>) => {
                                   );`;
       js += `marker.addTo(mymap).bindPopup('${markerContent}');`;
     }
+
+
   }
   return js;
 };
@@ -57,10 +59,10 @@ const addMapElements = (events: Array<Event>) => {
 export const render = (events: Array<Event>) => {
   return `
 <html>
-  ${head("EONET events")}
+  ${head("EONET API Explorer")}
   <body>
     <div id="main-title">
-        Earth Observatory Natural Event Tracker Explorer
+      <a href="/">Earth Observatory Natural Event Tracker Explorer</a>
     </div>
     <div id="main-content">
         <div id="map"></div>

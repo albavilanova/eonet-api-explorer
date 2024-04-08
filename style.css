@@ -73,6 +73,10 @@ body {
   padding: 0.4em;
 }
 
+#main-content { 
+  height: 82vh;
+}
+
 #map { 
   height: 82vh;
 }
@@ -95,4 +99,9 @@ footer a {
 .leaflet-popup-content {
   margin: 10px 10px 10px 10px !important;
   line-height: 1 !important;
+}
+
+#main-title a, .event a {
+  text-decoration: none;
+  color: rgb(51, 51, 51) !important;
 }
