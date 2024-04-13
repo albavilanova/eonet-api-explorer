@@ -120,6 +120,7 @@ footer a {
   text-align: center;
 }
 
+
 .event-content {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -146,5 +147,5 @@ footer a {
 }
 
 .info {
-  padding: 1em 5em;
+  padding: 1em 15em;
 }
