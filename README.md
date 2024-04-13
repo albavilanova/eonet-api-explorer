@@ -4,7 +4,7 @@ The app shows the natural events that occurred between 2000 and 2024 worldwide i
 
 <img src="./images/home.png" alt="Home page of EONET API Explorer" width="100%" height="100%">
 
-Each event can be accessed by clicking on the corresponding pop-ups and get detailed information.
+Each event can be accessed by clicking on its corresponding pop-up and get detailed information.
 
 <img src="./images/event.png" alt="Event page of EONET API Explorer" width="100%" height="100%">
 
