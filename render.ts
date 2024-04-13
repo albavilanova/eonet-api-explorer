@@ -24,12 +24,12 @@ const addMapElements = (events: Array<Event>) => {
   for (const event of events) {
     let geometry = event.geometry[event.geometry.length - 1];
     if (geometry.coordinates) {
-      var markerContent = `<div class="event"><a href="${event.id}.html">`;
+      var markerContent = `<div class="marker"><a href="${event.id}.html">`;
       markerContent += `<div class="categories">`;
       for (const category of event.categories) {
-        markerContent += `<div class="category ${category.id}">`
-        markerContent += `<img src="assets/icons/${event.categories[0].id}-icon.png" class="category-icon"/>`
-        markerContent += `<div class="category-name">${category.title}</div>`
+        markerContent += `<div class="category ${category.id}">`;
+        markerContent += `<img src="assets/icons/${event.categories[0].id}-icon.png" class="category-icon"/>`;
+        markerContent += `<div class="category-name">${category.title}</div>`;
         markerContent += `</div>`;
         break;
       }
@@ -50,8 +50,6 @@ const addMapElements = (events: Array<Event>) => {
                                   );`;
       js += `marker.addTo(mymap).bindPopup('${markerContent}');`;
     }
-
-
   }
   return js;
 };
@@ -61,11 +59,11 @@ export const render = (events: Array<Event>) => {
 <html>
   ${head("EONET API Explorer")}
   <body>
-    <div id="main-title">
+    <div class="main-title">
       <a href="/">Earth Observatory Natural Event Tracker Explorer</a>
     </div>
-    <div id="main-content">
-        <div id="map"></div>
+    <div class="main-content" id="events-container">
+      <div id="map"></div>
     </div>
     <script>
     var mymap = L.map('map').setView([0, 0], 2);
