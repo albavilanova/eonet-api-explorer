@@ -1,18 +1,16 @@
+:root {
+  --principal-blue: rgb(6, 31, 81);
+}
+
 html, body {
   margin: 0; 
   padding: 0; 
-  height: 100vh;
   width: 100%;
   font-family: sans-serif;
 }
 
-body {
-  overflow:hidden;
-}
-
 .main-title {
  font-weight: 600;
- font-size: 24px;
  text-align: center;
  border-bottom: 1px solid rgb(171, 171, 171);
  height: 8vh;
@@ -29,6 +27,8 @@ body {
 }
 
 .category {
+  display: grid;
+  grid-template-columns: auto auto;
   padding: 0.5em;
   margin-bottom: 0.5em;
   border-radius: 5px;
@@ -36,7 +36,6 @@ body {
 }
 
 .category-name  {
-  float: right;
   padding-top: 5px;
 }
 
@@ -66,21 +65,11 @@ body {
   padding: 0.4em;
 }
 
-/* .main-content { 
-  height: 82vh;
-} */
-
-#map, #event-container { 
-  height: 82vh;
-}
-
 footer {
-  font-size: 16px;
   text-align: center;
   color: white;
-  background-color: rgb(6, 31, 81);
+  background-color: var(--principal-blue);
   line-height: 25px;
-  height: 10vh;
   display: grid;
   align-items: center;
 }
@@ -101,15 +90,13 @@ footer a {
 
 #geometry-table {
   margin-top: 1em;
-  overflow-y: auto;
-  height: 30vh;
   display: block;
   table-layout: fixed;
   width: 100%;
 }
 
 #geometry-table th {
-  background-color: rgb(6, 31, 81);
+  background-color: var(--principal-blue);
   color: white;
 }
 
@@ -118,13 +105,6 @@ footer a {
   border-bottom: 1px solid rgb(195, 195, 195);
   width: 1%;
   text-align: center;
-}
-
-
-.event-content {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  align-items: start;
 }
 
 .event-content a {
@@ -136,16 +116,88 @@ footer a {
 }
 
 .event-title {
-  text-align: center;
-  font-size: 26px;
-  color: rgb(6, 31, 81);
+  color: var(--principal-blue);
 }
 
 .event-content h2 {
-  font-size: 22px;
   color: rgb(88 112 159);
 }
 
-.info {
-  padding: 1em 15em;
+#map { 
+  height: 82vh;
+}  
+
+footer {
+  height: 10vh;
+}
+
+@media (min-width: 780px) {
+
+  html, body {
+    height: 100vh;
+  }
+
+  body {
+    overflow:hidden;
+  }
+
+  #event-container { 
+    height: 82vh;
+  }
+  
+  .event-content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: start;
+  }
+
+  .info {
+    padding: 1em 7em;
+  }
+
+  #geometry-table {
+    overflow-y: auto;
+    height: 30vh;
+  }
+
+  .main-title {
+    font-size: 24px;
+  }
+
+  .event-content h2 {
+    font-size: 22px;
+  }
+
+  .event-title {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  footer {
+    font-size: 16px;
+  }
+}
+
+
+@media (max-width: 780px) {
+  .info {
+    padding: 1em;
+  }
+
+  .main-title {
+    font-size: 18px;
+  }
+
+  .event-content h2 {
+    font-size: 18px;
+  }
+
+  .event-title {
+    text-align: left;
+    font-size: 18px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
 }

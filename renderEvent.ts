@@ -65,9 +65,8 @@ const addEventInfo = (event: Event) => {
 };
 
 const addMapElements = (event: Event) => {
-
   let js = "";
-  js += `var markers = [];`
+  js += `var markers = [];`;
   for (const geometry of event.geometry) {
     js += `var LeafletIcon = L.Icon.extend({options: {iconSize: [10, 10]}});`;
     js += `var icon = new LeafletIcon({iconUrl: "assets/icons/dot-icon.png"});`;
@@ -78,8 +77,8 @@ const addMapElements = (event: Event) => {
     js += `marker.addTo(eventMap);`;
     js += `markers.push(marker);`;
   }
-  js += `var group = new L.featureGroup(markers);`
-  js += `eventMap.fitBounds(group.getBounds());`
+  js += `var group = new L.featureGroup(markers);`;
+  js += `eventMap.fitBounds(group.getBounds());`;
 
   return js;
 };
