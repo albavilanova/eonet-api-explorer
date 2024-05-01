@@ -3,7 +3,7 @@
   "module": "main.ts",
   "type": "module",
   "scripts": {
-    "render": "bun run main.ts & bun run index.ts"
+    "render": "bun run main.ts && bun run index.ts"
   },
   "devDependencies": {
     "bun-types": "^0.5.0"
